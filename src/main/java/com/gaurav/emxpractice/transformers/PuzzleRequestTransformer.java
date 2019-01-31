@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Finding the exact puzzle and removing all extra characters.
+ */
 @Component
 public class PuzzleRequestTransformer implements StringTransformer {
     protected static final Pattern PATTERN = Pattern.compile(" ABCD(.+)", Pattern.DOTALL);

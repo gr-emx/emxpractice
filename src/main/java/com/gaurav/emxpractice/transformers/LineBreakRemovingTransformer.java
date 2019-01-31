@@ -2,6 +2,9 @@ package com.gaurav.emxpractice.transformers;
 
 import org.springframework.stereotype.Controller;
 
+/**
+ * Removes linebreaks from input string.
+ */
 @Controller
 public class LineBreakRemovingTransformer  implements StringTransformer{
     @Override

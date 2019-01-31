@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
+/**
+ * Rest controller for either training or the testing endpoint.
+ */
 @RestController
 public class WebController {
     @Autowired

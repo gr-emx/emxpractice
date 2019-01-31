@@ -1,7 +1,9 @@
 package com.gaurav.emxpractice.responsegenerator;
 
-import com.gaurav.emxpractice.responsegenerator.ResponseGenerator;
-
+/**
+ * Abstract factory that returns the right response generator
+ * depending on what response is being requested
+ */
 public interface ResponseGeneratorFactory {
     ResponseGenerator fetchResponseGenerator(String shortForm);
 }

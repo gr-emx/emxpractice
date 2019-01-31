@@ -17,4 +17,8 @@ public class SimpleResponseGenerator implements ResponseGenerator {
         Answers answer = Answers.valueOf(spaceTransformer.transform(shortForm));
         return answer.getResponse();
     }
+
+    public void setSpaceTransformer(SpaceTransformer spaceTransformer) {
+        this.spaceTransformer = spaceTransformer;
+    }
 }

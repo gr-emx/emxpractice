@@ -27,18 +27,36 @@ public class PuzzleResponseGenerator implements ResponseGenerator {
 
     @PostConstruct
     public void doInit() throws IOException {
+        loadTrainingData();
+    }
 
+    public void loadTrainingData() throws IOException {
         String trainingData = FileUtils.readFileToString(new File(filename));
         String[] trainingItems = trainingData.split("\n");
         for (String trainingItem : trainingItems) {
             String[] entry = trainingItem.split(" : ");
             responseLookup.put(entry[0], entry[1]);
         }
-
     }
 
     @Override
     public String respond(String shortForm, String longForm) {
         return puzzleResponseTransformer.transform(responseLookup.get(puzzleRequestTransformer.transform(longForm)));
+    }
+
+    public PuzzleRequestTransformer getPuzzleRequestTransformer() {
+        return puzzleRequestTransformer;
+    }
+
+    public void setPuzzleRequestTransformer(PuzzleRequestTransformer puzzleRequestTransformer) {
+        this.puzzleRequestTransformer = puzzleRequestTransformer;
+    }
+
+    public PuzzleResponseTransformer getPuzzleResponseTransformer() {
+        return puzzleResponseTransformer;
+    }
+
+    public void setPuzzleResponseTransformer(PuzzleResponseTransformer puzzleResponseTransformer) {
+        this.puzzleResponseTransformer = puzzleResponseTransformer;
     }
 }

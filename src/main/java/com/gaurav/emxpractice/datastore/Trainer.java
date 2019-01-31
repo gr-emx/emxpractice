@@ -14,7 +14,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,6 +23,11 @@ import java.util.regex.Pattern;
 import static java.util.regex.Pattern.compile;
 import static org.apache.commons.lang3.StringEscapeUtils.unescapeHtml4;
 
+/**
+ * Instead of trying to find an answer, I used the training dataset to train  a model with all possible outcomes of the puzzle.
+ * The file trainingdata.txt contains various answers and this class helps add more values to it.
+ * Run this trainer multiple times to get all possible answers of the puzzle.
+ */
 @Service
 public class Trainer {
     @Value("${training.filename}")
@@ -41,6 +45,7 @@ public class Trainer {
     @Value("${response.answer.pattern}")
     protected String answerPattern;
 
+    //Set in the post construct
     protected Pattern patternQuestion;
     protected Pattern patternAnswer;
 
@@ -76,7 +81,7 @@ public class Trainer {
         }
     }
 
-    private Map.Entry<String, String> getQuestionAnswer(String url) throws Exception {
+    public Map.Entry<String, String> getQuestionAnswer(String url) throws Exception {
         URL path = new URL(url);
         WebRequest webRequest = new WebRequest(path, HttpMethod.POST);
         webRequest.setRequestBody(requestBody);
